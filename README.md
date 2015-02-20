@@ -7,12 +7,13 @@ A simple plasmoid for KDE to send some amixer commands.
 git clone
 ./build.sh
 
-The build script will :
+The build script will:
+
 1. Create a plasmoid archive (or update it)
 2. Try to remove a prevuois installation of the plasmoid
 3. Install the new version of the plasmoid
 
-Currently the plasmoid juste diaplay 2 buttons:
+Currently the plasmoid just diaplay 2 buttons:
 * 'Rear' that send the command: amixer sset "Analog Output" "Stereo Headphones"
 * 'Front' that send the command: amixer sset "Analog Output" "Stereo Headphones FP"
 
