@@ -1,0 +1,20 @@
+[Desktop Entry]
+Encoding=UTF-8
+
+Name=NM amixer
+Type=Service
+ServiceTypes=Plasma/Applet
+Icon=kde
+
+X-Plasma-API=python
+X-Plasma-MainScript=code/main.py
+
+X-KDE-PluginInfo-Author=Neuronalmotion
+X-KDE-PluginInfo-Email=guillaume.lazar@neuronalmotion.com
+X-KDE-PluginInfo-Website=
+X-KDE-PluginInfo-Category=Utilities
+X-KDE-PluginInfo-Name=nm-plasmoid-amixer
+X-KDE-PluginInfo-Version=0.1    
+X-KDE-PluginInfo-Depends=
+X-KDE-PluginInfo-License=GPL
+X-KDE-PluginInfo-EnabledByDefault=true
