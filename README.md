@@ -4,7 +4,7 @@ A simple plasmoid for KDE to send some amixer commands.
 ![alt tag](https://github.com/neuronalmotion/plasmoid-amixer/raw/develop/img/20150220_first-release.png)
 
 ## Features
-Currently the plasmoid just diaplay 2 buttons:
+Currently the plasmoid just display 2 buttons:
 * 'Rear' that send the command: amixer sset "Analog Output" "Stereo Headphones"
 * 'Front' that send the command: amixer sset "Analog Output" "Stereo Headphones FP"
 
