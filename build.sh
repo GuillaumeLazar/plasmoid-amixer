@@ -7,4 +7,5 @@ cd ..
 plasmapkg -r nm-plasmoid-amixer
 sleep 1
 plasmapkg -i nm-plasmoid-amixer.zip 
-
+sleep 1
+plasmoidviewer nm-plasmoid-amixer
