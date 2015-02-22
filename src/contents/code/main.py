@@ -8,10 +8,12 @@ from PyQt4.QtCore import Qt
 from PyQt4.QtGui import QGraphicsLinearLayout
 from PyKDE4.plasma import Plasma
 from PyKDE4 import plasmascript
+from PyKDE4 import kdecore
 
 import subprocess
 import re
 import time
+import os
 
 class NMAmixer(plasmascript.Applet):
     mixerControlName = "Analog Output"
@@ -21,19 +23,26 @@ class NMAmixer(plasmascript.Applet):
     frontLabel = "HP"
     rearLabel = "Rear"
 
+    frontPicture = "/images/headphones.png"
+    rearPicture = "/images/speaker.png"
+
     buttonSwitchOutput = None
+
+    rootPath = None
 
     def __init__(self,parent,args=None):
         plasmascript.Applet.__init__(self,parent)
 
     def init(self):
+        self.rootPath = kdecore.KGlobal.dirs().locate("data", "plasma/plasmoids/nm-plasmoid-amixer/contents/")
+
         self.setHasConfigurationInterface(False)
         self.setAspectRatioMode(Plasma.Square)
 
         self.layout = QGraphicsLinearLayout(Qt.Vertical, self.applet)
-
         self.buttonSwitchOutput = Plasma.PushButton(self.applet)
-        self.buttonSwitchOutput.setText(self.getCurrentOutputLabel())
+        #self.buttonSwitchOutput.setText(self.getCurrentOutputLabel())
+        self.buttonSwitchOutput.setImage(self.getCurrentOutputPicture())
         self.buttonSwitchOutput.clicked.connect(self.onClickButtonSwitchOutput)
         self.layout.addItem(self.buttonSwitchOutput)
 
@@ -62,6 +71,18 @@ class NMAmixer(plasmascript.Applet):
 
         return label
 
+    def getCurrentOutputPicture(self):
+        picture = ""
+        outputName = self.getCurrentOutputName()
+
+        if outputName == self.frontAmixerValue:
+            picture = self.frontPicture
+        elif outputName == self.rearAmixerValue:
+            picture = self.rearPicture
+
+        return self.rootPath + picture
+
+
     def onClickButtonSwitchOutput(self):
         outputName = self.getCurrentOutputName()
         outputNameTarget = None
@@ -76,7 +97,8 @@ class NMAmixer(plasmascript.Applet):
         # Avoid IOError: [Errno 4] Interrupted system call
         time.sleep(1)
 
-        self.buttonSwitchOutput.setText(self.getCurrentOutputLabel())
+        #self.buttonSwitchOutput.setText(self.getCurrentOutputLabel())
+        self.buttonSwitchOutput.setImage(self.getCurrentOutputPicture())
 
 def CreateApplet(parent):
     return NMAmixer(parent)
