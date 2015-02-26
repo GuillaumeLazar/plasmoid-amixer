@@ -19,7 +19,7 @@ class NMAmixer(plasmascript.Applet):
     cardName = "DGX" #from cat /proc/asound/cards
     mixerControlName = "Analog Output"
     frontAmixerValue = "Stereo Headphones FP"
-    rearAmixerValue = "Multichannel"
+    rearAmixerValue = "Stereo Headphones"
 
     frontLabel = "HP"
     rearLabel = "Rear"
